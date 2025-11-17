@@ -1,1 +1,1 @@
-# pmf-spa3-seminarski
+# pmf-dsa3-seminar
