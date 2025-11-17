@@ -83,17 +83,25 @@ $Q space := emptyset,$ $Q space arrow.l r,$ $l(r) := 0$ $t(r) := 1,$ mark $r, i 
 // DRAWING OUT BFS ALGORITHM
 #rect(width: 400pt, height: 200pt)[
   #diagram(
-    cell-size: (2.5mm, 1.5mm),
     node-stroke: 0.6pt,
     node((0,0), [1], name: <1>, stroke: 1pt),
-    node((-2, -0.1), [2], name: <2>, stroke: 1pt),
-    node((-3, 1.5), [6], name:<6>, stroke: 1pt),
-    edge(<1>, <2>, "-"),
-    edge(<2>, <6>, "-")  
+    node((-1.5, -0.3), [2], name: <2>, stroke: 1pt),
+    node((0.2, 1.4), [3], name:<3>, stroke: 1pt),
+    node((0.9, 0.7), [4], name: <4>, stroke: 1pt),
+    node((2.2, 0.2), [5], name: <5>, stroke: 1pt),
+    node((-2.5, 0.9), [6], name:<6>, stroke: 1pt),
+    node((-1.1, 1.1), [7], name:<7>, stroke: 1pt),
+    edge(<1>, <2>, "-"),    
+    edge(<1>, <3>, "-"),
+    edge(<1>, <4>, "-"),
+    edge(<1>, <5>, "-"),
+    edge(<2>, <6>, "-"),   
+    edge(<2>, <7>, "-"),
+    edge(<3>, <4>, "-"),
   )
   
   #diagram(
-    cell-size: (2.5mm, 1.5mm),
+    cell-size: (10mm, 15mm),
     node-stroke: 0.6pt,
     node((0,0), [1], name: <1>, stroke: 1pt),
     node((-2, -0.1), [2], name: <2>, stroke: 1pt),
