@@ -1,3 +1,6 @@
+// PACKAGES USED
+#import "@preview/fletcher:0.5.8" as f: diagram, node, edge
+
 // DOCUMENT SETUP
 #set heading(numbering: "1.1")
 #show title: set align(center)
@@ -72,8 +75,33 @@ For a connected graph, the algorithm will return:
 > INPUT: a connected graph $G$, a vertex $r space epsilon V(G)$ \
 > OUTPUT: an $r$-tree $T in G$, its predecessor function $p$, its level function $l$, the time function $t$.
 
+
+// WRITE OUT COMPLETE ALGORITHM
 $Q space := emptyset,$ $Q space arrow.l r,$ $l(r) := 0$ $t(r) := 1,$ mark $r, i := 1$ \
 *while* $Q space note emptyset $
+
+// DRAWING OUT BFS ALGORITHM
+#rect(width: 400pt, height: 200pt)[
+  #diagram(
+    cell-size: (2.5mm, 1.5mm),
+    node-stroke: 0.6pt,
+    node((0,0), [1], name: <1>, stroke: 1pt),
+    node((-2, -0.1), [2], name: <2>, stroke: 1pt),
+    node((-3, 1.5), [6], name:<6>, stroke: 1pt),
+    edge(<1>, <2>, "-"),
+    edge(<2>, <6>, "-")  
+  )
+  
+  #diagram(
+    cell-size: (2.5mm, 1.5mm),
+    node-stroke: 0.6pt,
+    node((0,0), [1], name: <1>, stroke: 1pt),
+    node((-2, -0.1), [2], name: <2>, stroke: 1pt),
+    node((-3, 1.5), [6], name:<6>, stroke: 1pt),
+    edge(<1>, <2>, "-"),
+    edge(<2>, <6>, "-")  
+  )
+]
 
 
 #pagebreak()
