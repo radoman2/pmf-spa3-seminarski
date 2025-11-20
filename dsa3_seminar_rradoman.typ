@@ -71,7 +71,9 @@ For a connected graph, the algorithm will return:
 - the level function,
 - the time function (order in which vertices are added to the tree)
 
-*BFS Algorithm* \
+\
+
+=== BFS Algorithm
 > INPUT: a connected graph $G$, a vertex $r space epsilon V(G)$ \
 > OUTPUT: an $r$-tree $T in G$, its predecessor function $p$, its level function $l$, the time function $t$.
 
@@ -80,20 +82,26 @@ For a connected graph, the algorithm will return:
 $Q space := emptyset,$ $Q space arrow.l r,$ $l(r) := 0$ $t(r) := 1,$ mark $r, i := 1$ \
 *while* $Q space note emptyset $
 
+\
+
 // DRAWING OUT BFS ALGORITHM
-#rect(width: 400pt, height: 200pt)[
-  #diagram(
+=== BFS example
+
+#grid(
+columns: (1fr, 1fr, 1fr, 1fr),
+align: (center + horizon),
+
+grid(
+  diagram(
     node-stroke: 0.6pt,
     node((0,0), [1], name: <1>, stroke: 1pt),
-    node((-1.5, -0.3), [2], name: <2>, stroke: 1pt),
+    node((-1.1, -0.3), [2], name: <2>, stroke: 1pt),
     node((0.2, 1.4), [3], name:<3>, stroke: 1pt),
     node((0.9, 0.7), [4], name: <4>, stroke: 1pt),
-    node((2.2, 0.2), [5], name: <5>, stroke: 1pt),
-    node((-2.5, 0.9), [6], name:<6>, stroke: 1pt),
-    node((-1.1, 1.1), [7], name:<7>, stroke: 1pt),
-    node((-0.7, 2.1), [8], name:<8>, stroke: 1pt),
-    node((-0.3, 3.1), [9], name:<9>, stroke: 1pt),
-    node((1.1, 1.6), [10], name: <10>, stroke: 1pt),
+    node((1.1, -0.3), [5], name: <5>, stroke: 1pt),
+    node((-2.1, 0.2), [6], name:<6>, stroke: 1pt),
+    node((-1.0, 0.4), [7], name:<7>, stroke: 1pt),
+    node((-0.7, 1.3), [8], name:<8>, stroke: 1pt),
     edge(<1>, <2>, "-"),    
     edge(<1>, <3>, "-"),
     edge(<1>, <4>, "-"),
@@ -101,18 +109,109 @@ $Q space := emptyset,$ $Q space arrow.l r,$ $l(r) := 0$ $t(r) := 1,$ mark $r, i 
     edge(<2>, <6>, "-"),   
     edge(<2>, <7>, "-"),
     edge(<3>, <4>, "-"),
-  )
-  
-  #diagram(
-    cell-size: (10mm, 15mm),
+    edge(<3>, <7>, "-"),
+    edge(<3>, <8>, "-"),
+    edge(<4>, <7>, "-"),
+    edge(<6>, <8>, "-"),
+    ),
+    [$emptyset$],
+),
+
+$arrow.r$,
+
+grid(
+  diagram(
+    node-stroke: 0.6pt,
+    node((0,0), [1], name: <1>, stroke: 1pt + red),
+    node((-1.1, -0.3), [2], name: <2>, stroke: 1pt),
+    node((0.2, 1.4), [3], name:<3>, stroke: 1pt),
+    node((0.9, 0.7), [4], name: <4>, stroke: 1pt),
+    node((1.1, -0.3), [5], name: <5>, stroke: 1pt),
+    node((-2.1, 0.2), [6], name:<6>, stroke: 1pt),
+    node((-1.0, 0.4), [7], name:<7>, stroke: 1pt),
+    node((-0.7, 1.3), [8], name:<8>, stroke: 1pt),
+    edge(<1>, <2>, "-"),    
+    edge(<1>, <3>, "-"),
+    edge(<1>, <4>, "-"),
+    edge(<1>, <5>, "-"),
+    edge(<2>, <6>, "-"),   
+    edge(<2>, <7>, "-"),
+    edge(<3>, <4>, "-"),
+    edge(<3>, <7>, "-"),
+    edge(<3>, <8>, "-"),
+    edge(<4>, <7>, "-"),
+    edge(<6>, <8>, "-"),
+    ),
+    [1],
+),
+
+$arrow.r$,
+)
+
+
+
+#grid(
+columns: (1fr, 1fr, 1fr, 1fr),
+align: (center + horizon),
+
+grid(
+  diagram(
     node-stroke: 0.6pt,
     node((0,0), [1], name: <1>, stroke: 1pt),
-    node((-2, -0.1), [2], name: <2>, stroke: 1pt),
-    node((-3, 1.5), [6], name:<6>, stroke: 1pt),
-    edge(<1>, <2>, "-"),
-    edge(<2>, <6>, "-")  
-  )
-]
+    node((-1.1, -0.3), [2], name: <2>, stroke: 1pt),
+    node((0.2, 1.4), [3], name:<3>, stroke: 1pt),
+    node((0.9, 0.7), [4], name: <4>, stroke: 1pt),
+    node((1.1, -0.3), [5], name: <5>, stroke: 1pt),
+    node((-2.1, 0.2), [6], name:<6>, stroke: 1pt),
+    node((-1.0, 0.4), [7], name:<7>, stroke: 1pt),
+    node((-0.7, 1.3), [8], name:<8>, stroke: 1pt),
+    edge(<1>, <2>, "-"),    
+    edge(<1>, <3>, "-"),
+    edge(<1>, <4>, "-"),
+    edge(<1>, <5>, "-"),
+    edge(<2>, <6>, "-"),   
+    edge(<2>, <7>, "-"),
+    edge(<3>, <4>, "-"),
+    edge(<3>, <7>, "-"),
+    edge(<3>, <8>, "-"),
+    edge(<4>, <7>, "-"),
+    edge(<6>, <8>, "-"),
+    ),
+    [$emptyset$],
+),
+
+$arrow.r$,
+
+grid(
+  diagram(
+    node-stroke: 0.6pt,
+    node((0,0), [1], name: <1>, stroke: 1pt + red),
+    node((-1.1, -0.3), [2], name: <2>, stroke: 1pt),
+    node((0.2, 1.4), [3], name:<3>, stroke: 1pt),
+    node((0.9, 0.7), [4], name: <4>, stroke: 1pt),
+    node((1.1, -0.3), [5], name: <5>, stroke: 1pt),
+    node((-2.1, 0.2), [6], name:<6>, stroke: 1pt),
+    node((-1.0, 0.4), [7], name:<7>, stroke: 1pt),
+    node((-0.7, 1.3), [8], name:<8>, stroke: 1pt),
+    edge(<1>, <2>, "-"),    
+    edge(<1>, <3>, "-"),
+    edge(<1>, <4>, "-"),
+    edge(<1>, <5>, "-"),
+    edge(<2>, <6>, "-"),   
+    edge(<2>, <7>, "-"),
+    edge(<3>, <4>, "-"),
+    edge(<3>, <7>, "-"),
+    edge(<3>, <8>, "-"),
+    edge(<4>, <7>, "-"),
+    edge(<6>, <8>, "-"),
+    ),
+    [1],
+),
+
+$arrow.r$,
+)
+
+
 
 
 #pagebreak()
