@@ -676,8 +676,9 @@ block( //placeholder
 ),
 
 block(
-  [detailed (stack is used) \
-  $emptyset arrow.r$ 1 $arrow.r$ 12 $arrow.r$ 127 $arrow.r$ 1273 $arrow.r$]
+  [*detailed* _(stack is used)_ \
+  $emptyset arrow.r$ 1 $arrow.r$ 12 $arrow.r$ 127 $arrow.r$ 1273 $arrow.r$ 12734 $arrow.r$ 1273 $arrow.r$ 12738 $arrow.r$ 127386 $arrow.r$
+  12738 $arrow.r$ 1273 $arrow.r$ 127 $arrow.r$ 12 $arrow.r$ 1 $arrow.r$ 15 $arrow.r$ 1 $arrow.r emptyset$]
 )
 
 
