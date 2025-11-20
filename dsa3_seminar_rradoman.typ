@@ -5,7 +5,7 @@
 #set heading(numbering: "1.1")
 #show title: set align(center)
 #title[DSA3 seminar paper]
-#set document(title:[DSA3 seminar paper])
+#set document(title:[DSA3 seminar assignment])
 // dodati naslov na svakoj stranici gore u uglu
 
 // SIGNATURE
@@ -382,6 +382,310 @@ grid(
 #pagebreak()
 
 === DFS example
+
+// ROW 1
+#grid(
+columns: (1fr, 1fr, 1fr, 1fr),
+align: (center + horizon),
+
+grid(
+  diagram(
+    node-stroke: 0.6pt,
+    node((0,0), [1], name: <1>),
+    node((-1.1, -0.3), [2], name: <2>),
+    node((0.2, 1.4), [3], name:<3>),
+    node((0.9, 0.7), [4], name: <4>),
+    node((1.1, -0.3), [5], name: <5>),
+    node((-2.1, 0.2), [6], name:<6>),
+    node((-1.0, 0.4), [7], name:<7>),
+    node((-0.7, 1.3), [8], name:<8>),
+    edge(<1>, <2>, "-"),    
+    edge(<1>, <3>, "-"),
+    edge(<1>, <4>, "-"),
+    edge(<1>, <5>, "-"),
+    edge(<2>, <6>, "-"),   
+    edge(<2>, <7>, "-"),
+    edge(<3>, <4>, "-"),
+    edge(<3>, <7>, "-"),
+    edge(<3>, <8>, "-"),
+    edge(<4>, <7>, "-"),
+    edge(<6>, <8>, "-"),
+    ),
+    [$emptyset$],
+),
+
+$arrow.r$,
+
+grid(
+  diagram(
+    node-stroke: 0.6pt,
+    node((0,0), text(red,[1]), name: <1>, stroke: 1pt + red),
+    node((-1.1, -0.3), [2], name: <2>),
+    node((0.2, 1.4), [3], name:<3>),
+    node((0.9, 0.7), [4], name: <4>),
+    node((1.1, -0.3), [5], name: <5>),
+    node((-2.1, 0.2), [6], name:<6>),
+    node((-1.0, 0.4), [7], name:<7>),
+    node((-0.7, 1.3), [8], name:<8>),
+    edge(<1>, <2>, "-"),    
+    edge(<1>, <3>, "-"),
+    edge(<1>, <4>, "-"),
+    edge(<1>, <5>, "-"),
+    edge(<2>, <6>, "-"),   
+    edge(<2>, <7>, "-"),
+    edge(<3>, <4>, "-"),
+    edge(<3>, <7>, "-"),
+    edge(<3>, <8>, "-"),
+    edge(<4>, <7>, "-"),
+    edge(<6>, <8>, "-"),
+    ),
+    [1],
+),
+
+$arrow.r$,
+)
+
+
+
+// ROW 2
+#grid(
+columns: (1fr, 1fr, 1fr, 1fr),
+align: (center + horizon),
+
+grid(
+  diagram(
+    node-stroke: 0.6pt,
+    node((0,0), text(red,[1]), name: <1>, stroke: 1pt + red),
+    node((-1.1, -0.3), text(red,[2]), name: <2>, stroke: 1pt + red),
+    node((0.2, 1.4), [3], name:<3>),
+    node((0.9, 0.7), [4], name: <4>),
+    node((1.1, -0.3), [5], name: <5>),
+    node((-2.1, 0.2), [6], name:<6>),
+    node((-1.0, 0.4), [7], name:<7>),
+    node((-0.7, 1.3), [8], name:<8>),
+    edge(<1>, <2>, "-", stroke: 1pt + red),    
+    edge(<1>, <3>, "-"),
+    edge(<1>, <4>, "-"),
+    edge(<1>, <5>, "-"),
+    edge(<2>, <6>, "-"),   
+    edge(<2>, <7>, "-"),
+    edge(<3>, <4>, "-"),
+    edge(<3>, <7>, "-"),
+    edge(<3>, <8>, "-"),
+    edge(<4>, <7>, "-"),
+    edge(<6>, <8>, "-"),
+    ),
+    [12],
+),
+
+$arrow.r$,
+
+grid(
+  diagram(
+    node-stroke: 0.6pt,
+    node((0,0), text(red,[1]), name: <1>, stroke: 1pt + red),
+    node((-1.1, -0.3), text(red,[2]), name: <2>, stroke: 1pt + red),
+    node((0.2, 1.4), [3], name:<3>),
+    node((0.9, 0.7), [4], name: <4>),
+    node((1.1, -0.3), [5], name: <5>),
+    node((-2.1, 0.2), [6], name:<6>),
+    node((-1.0, 0.4), text(red,[7]), name:<7>, stroke: 1pt + red),
+    node((-0.7, 1.3), [8], name:<8>),
+    edge(<1>, <2>, "-", stroke: 1pt + red),    
+    edge(<1>, <3>, "-"),
+    edge(<1>, <4>, "-"),
+    edge(<1>, <5>, "-"),
+    edge(<2>, <6>, "-"),   
+    edge(<2>, <7>, "-", stroke: 1pt + red),
+    edge(<3>, <4>, "-"),
+    edge(<3>, <7>, "-"),
+    edge(<3>, <8>, "-"),
+    edge(<4>, <7>, "-"),
+    edge(<6>, <8>, "-"),
+    ),
+    [127],
+),
+
+$arrow.r$,
+)
+
+
+
+// ROW 3
+#grid(
+columns: (1fr, 1fr, 1fr, 1fr),
+align: (center + horizon),
+
+grid(
+  diagram(
+    node-stroke: 0.6pt,
+    node((0,0), text(red,[1]), name: <1>, stroke: 1pt + red),
+    node((-1.1, -0.3), text(red,[2]), name: <2>, stroke: 1pt + red),
+    node((0.2, 1.4), text(red,[3]), name:<3>, stroke: 1pt + red),
+    node((0.9, 0.7), [4], name: <4>),
+    node((1.1, -0.3), [5], name: <5>),
+    node((-2.1, 0.2), [6], name:<6>),
+    node((-1.0, 0.4), text(red,[7]), name:<7>, stroke: 1pt + red),
+    node((-0.7, 1.3), [8], name:<8>),
+    edge(<1>, <2>, "-", stroke: 1pt + red),    
+    edge(<1>, <3>, "-"),
+    edge(<1>, <4>, "-"),
+    edge(<1>, <5>, "-"),
+    edge(<2>, <6>, "-"),   
+    edge(<2>, <7>, "-", stroke: 1pt + red),
+    edge(<3>, <4>, "-"),
+    edge(<3>, <7>, "-", stroke: 1pt + red),
+    edge(<3>, <8>, "-"),
+    edge(<4>, <7>, "-"),
+    edge(<6>, <8>, "-"),
+    ),
+    [1273],
+),
+
+$arrow.r$,
+
+grid(
+  diagram(
+    node-stroke: 0.6pt,
+    node((0,0), text(red,[1]), name: <1>, stroke: 1pt + red),
+    node((-1.1, -0.3), text(red,[2]), name: <2>, stroke: 1pt + red),
+    node((0.2, 1.4), text(red,[3]), name:<3>, stroke: 1pt + red),
+    node((0.9, 0.7), text(red,[4]), name: <4>, stroke: 1pt + red),
+    node((1.1, -0.3), [5], name: <5>),
+    node((-2.1, 0.2), [6], name:<6>),
+    node((-1.0, 0.4), text(red,[7]), name:<7>, stroke: 1pt + red),
+    node((-0.7, 1.3), [8], name:<8>),
+    edge(<1>, <2>, "-", stroke: 1pt + red),    
+    edge(<1>, <3>, "-"),
+    edge(<1>, <4>, "-"),
+    edge(<1>, <5>, "-"),
+    edge(<2>, <6>, "-"),   
+    edge(<2>, <7>, "-", stroke: 1pt + red),
+    edge(<3>, <4>, "-", stroke: 1pt + red),
+    edge(<3>, <7>, "-", stroke: 1pt + red),
+    edge(<3>, <8>, "-"),
+    edge(<4>, <7>, "-"),
+    edge(<6>, <8>, "-"),
+    ),
+    [12734],
+),
+
+$arrow.r$,
+)
+
+
+
+// ROW 4
+#grid(
+columns: (1fr, 1fr, 1fr, 1fr),
+align: (center + horizon),
+
+grid(
+  diagram(
+    node-stroke: 0.6pt,
+    node((0,0), text(red,[1]), name: <1>, stroke: 1pt + red),
+    node((-1.1, -0.3), text(red,[2]), name: <2>, stroke: 1pt + red),
+    node((0.2, 1.4), text(red,[3]), name:<3>, stroke: 1pt + red),
+    node((0.9, 0.7), text(red,[4]), name: <4>, stroke: 1pt + red),
+    node((1.1, -0.3), [5], name: <5>),
+    node((-2.1, 0.2), [6], name:<6>),
+    node((-1.0, 0.4), text(red,[7]), name:<7>, stroke: 1pt + red),
+    node((-0.7, 1.3), text(red,[8]), name:<8>, stroke: 1pt + red),
+    edge(<1>, <2>, "-", stroke: 1pt + red),    
+    edge(<1>, <3>, "-"),
+    edge(<1>, <4>, "-"),
+    edge(<1>, <5>, "-"),
+    edge(<2>, <6>, "-"),   
+    edge(<2>, <7>, "-", stroke: 1pt + red),
+    edge(<3>, <4>, "-", stroke: 1pt + red),
+    edge(<3>, <7>, "-", stroke: 1pt + red),
+    edge(<3>, <8>, "-", stroke: 1pt + red),
+    edge(<4>, <7>, "-"),
+    edge(<6>, <8>, "-"),
+    ),
+    [12738],
+),
+
+$arrow.r$,
+
+grid(
+  diagram(
+    node-stroke: 0.6pt,
+    node((0,0), text(red,[1]), name: <1>, stroke: 1pt + red),
+    node((-1.1, -0.3), text(red,[2]), name: <2>, stroke: 1pt + red),
+    node((0.2, 1.4), text(red,[3]), name:<3>, stroke: 1pt + red),
+    node((0.9, 0.7), text(red,[4]), name: <4>, stroke: 1pt + red),
+    node((1.1, -0.3), [5], name: <5>),
+    node((-2.1, 0.2), text(red,[6]), name:<6>, stroke: 1pt + red),
+    node((-1.0, 0.4), text(red,[7]), name:<7>, stroke: 1pt + red),
+    node((-0.7, 1.3), text(red,[8]), name:<8>, stroke: 1pt + red),
+    edge(<1>, <2>, "-", stroke: 1pt + red),    
+    edge(<1>, <3>, "-"),
+    edge(<1>, <4>, "-"),
+    edge(<1>, <5>, "-"),
+    edge(<2>, <6>, "-"),   
+    edge(<2>, <7>, "-", stroke: 1pt + red),
+    edge(<3>, <4>, "-", stroke: 1pt + red),
+    edge(<3>, <7>, "-", stroke: 1pt + red),
+    edge(<3>, <8>, "-", stroke: 1pt + red),
+    edge(<4>, <7>, "-"),
+    edge(<6>, <8>, "-", stroke: 1pt + red),
+    ),
+    [127386],
+),
+
+$arrow.r$,
+)
+
+
+
+// ROW 5
+#grid(
+columns: (1fr, 1fr, 1fr, 1fr),
+align: (center + horizon),
+
+grid(
+  diagram(
+    node-stroke: 0.6pt,
+    node((0,0), text(red,[1]), name: <1>, stroke: 1pt + red),
+    node((-1.1, -0.3), text(red,[2]), name: <2>, stroke: 1pt + red),
+    node((0.2, 1.4), text(red,[3]), name:<3>, stroke: 1pt + red),
+    node((0.9, 0.7), text(red,[4]), name: <4>, stroke: 1pt + red),
+    node((1.1, -0.3), text(red,[5]), name: <5>, stroke: 1pt + red),
+    node((-2.1, 0.2), text(red,[6]), name:<6>, stroke: 1pt + red),
+    node((-1.0, 0.4), text(red,[7]), name:<7>, stroke: 1pt + red),
+    node((-0.7, 1.3), text(red,[8]), name:<8>, stroke: 1pt + red),
+    edge(<1>, <2>, "-", stroke: 1pt + red),    
+    edge(<1>, <3>, "-"),
+    edge(<1>, <4>, "-"),
+    edge(<1>, <5>, "-", stroke: 1pt + red),
+    edge(<2>, <6>, "-"),   
+    edge(<2>, <7>, "-", stroke: 1pt + red),
+    edge(<3>, <4>, "-"),
+    edge(<3>, <7>, "-", stroke: 1pt + red),
+    edge(<3>, <8>, "-", stroke: 1pt + red),
+    edge(<4>, <7>, "-"),
+    edge(<6>, <8>, "-", stroke: 1pt + red),
+    ),
+    [15],
+  ),
+
+
+block( //placeholder
+  fill: gray,
+),
+
+block(
+  [detailed (stack is used) \
+  $emptyset arrow.r$ 1 $arrow.r$ 12 $arrow.r$ 127 $arrow.r$ 1273 $arrow.r$]
+)
+
+
+
+)
+
+
+
 
 
 #pagebreak()
