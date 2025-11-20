@@ -363,14 +363,24 @@ grid(
     edge(<1>, <5>, "-", stroke: 1pt + red),
     edge(<2>, <6>, "-", stroke: 1pt + red),   
     edge(<2>, <7>, "-", stroke: 1pt + red),
-    edge(<3>, <4>, "-", stroke: 1pt + red),
+    edge(<3>, <4>, "-"),
     edge(<3>, <7>, "-"),
     edge(<3>, <8>, "-", stroke: 1pt + red),
     edge(<4>, <7>, "-"),
     edge(<6>, <8>, "-"),
     ),
     [345678],
+),
+
+block( //placeholder
+),
+
+block(
+  [*detailed* _(queue is used)_ \
+  $emptyset arrow.r$ 1 $arrow.r$ 12 $arrow.r$)
+  ]
 )
+
 )
 
 #pagebreak()
@@ -661,7 +671,7 @@ grid(
     edge(<1>, <5>, "-", stroke: 1pt + red),
     edge(<2>, <6>, "-"),   
     edge(<2>, <7>, "-", stroke: 1pt + red),
-    edge(<3>, <4>, "-"),
+    edge(<3>, <4>, "-", stroke: 1pt + red),
     edge(<3>, <7>, "-", stroke: 1pt + red),
     edge(<3>, <8>, "-", stroke: 1pt + red),
     edge(<4>, <7>, "-"),
@@ -672,7 +682,6 @@ grid(
 
 
 block( //placeholder
-  fill: gray,
 ),
 
 block(
