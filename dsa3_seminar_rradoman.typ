@@ -87,6 +87,7 @@ $Q space := emptyset,$ $Q space arrow.l r,$ $l(r) := 0$ $t(r) := 1,$ mark $r, i 
 // DRAWING OUT BFS ALGORITHM
 === BFS example
 
+// ROW 1
 #grid(
 columns: (1fr, 1fr, 1fr, 1fr),
 align: (center + horizon),
@@ -149,7 +150,7 @@ $arrow.r$,
 )
 
 
-
+// ROW 2
 #grid(
 columns: (1fr, 1fr, 1fr, 1fr),
 align: (center + horizon),
@@ -157,15 +158,15 @@ align: (center + horizon),
 grid(
   diagram(
     node-stroke: 0.6pt,
-    node((0,0), [1], name: <1>, stroke: 1pt),
-    node((-1.1, -0.3), [2], name: <2>, stroke: 1pt),
+    node((0,0), [1], name: <1>, stroke: 1pt + red),
+    node((-1.1, -0.3), [2], name: <2>, stroke: 1pt + red),
     node((0.2, 1.4), [3], name:<3>, stroke: 1pt),
     node((0.9, 0.7), [4], name: <4>, stroke: 1pt),
     node((1.1, -0.3), [5], name: <5>, stroke: 1pt),
     node((-2.1, 0.2), [6], name:<6>, stroke: 1pt),
     node((-1.0, 0.4), [7], name:<7>, stroke: 1pt),
     node((-0.7, 1.3), [8], name:<8>, stroke: 1pt),
-    edge(<1>, <2>, "-"),    
+    edge(<1>, <2>, "-", stroke: 1pt + red),    
     edge(<1>, <3>, "-"),
     edge(<1>, <4>, "-"),
     edge(<1>, <5>, "-"),
@@ -177,7 +178,7 @@ grid(
     edge(<4>, <7>, "-"),
     edge(<6>, <8>, "-"),
     ),
-    [$emptyset$],
+    [12],
 ),
 
 $arrow.r$,
@@ -193,8 +194,8 @@ grid(
     node((-2.1, 0.2), [6], name:<6>, stroke: 1pt),
     node((-1.0, 0.4), [7], name:<7>, stroke: 1pt),
     node((-0.7, 1.3), [8], name:<8>, stroke: 1pt),
-    edge(<1>, <2>, "-"),    
-    edge(<1>, <3>, "-"),
+    edge(<1>, <2>, "-", stroke: 1pt + red),    
+    edge(<1>, <3>, "-", stroke: 1pt + red),
     edge(<1>, <4>, "-"),
     edge(<1>, <5>, "-"),
     edge(<2>, <6>, "-"),   
@@ -205,12 +206,74 @@ grid(
     edge(<4>, <7>, "-"),
     edge(<6>, <8>, "-"),
     ),
-    [1],
+    [123],
 ),
 
 $arrow.r$,
 )
 
+
+// ROW 3
+#grid(
+columns: (1fr, 1fr, 1fr, 1fr),
+align: (center + horizon),
+
+grid(
+  diagram(
+    node-stroke: 0.6pt,
+    node((0,0), [1], name: <1>, stroke: 1pt + red),
+    node((-1.1, -0.3), [2], name: <2>, stroke: 1pt),
+    node((0.2, 1.4), [3], name:<3>, stroke: 1pt),
+    node((0.9, 0.7), [4], name: <4>, stroke: 1pt),
+    node((1.1, -0.3), [5], name: <5>, stroke: 1pt),
+    node((-2.1, 0.2), [6], name:<6>, stroke: 1pt),
+    node((-1.0, 0.4), [7], name:<7>, stroke: 1pt),
+    node((-0.7, 1.3), [8], name:<8>, stroke: 1pt),
+    edge(<1>, <2>, "-", stroke: 1pt + red),    
+    edge(<1>, <3>, "-", stroke: 1pt + red),
+    edge(<1>, <4>, "-", stroke: 1pt + red),
+    edge(<1>, <5>, "-"),
+    edge(<2>, <6>, "-"),   
+    edge(<2>, <7>, "-"),
+    edge(<3>, <4>, "-"),
+    edge(<3>, <7>, "-"),
+    edge(<3>, <8>, "-"),
+    edge(<4>, <7>, "-"),
+    edge(<6>, <8>, "-"),
+    ),
+    [1234],
+),
+
+$arrow.r$,
+
+grid(
+  diagram(
+    node-stroke: 0.6pt,
+    node((0,0), [1], name: <1>, stroke: 1pt + red),
+    node((-1.1, -0.3), [2], name: <2>, stroke: 1pt),
+    node((0.2, 1.4), [3], name:<3>, stroke: 1pt),
+    node((0.9, 0.7), [4], name: <4>, stroke: 1pt),
+    node((1.1, -0.3), [5], name: <5>, stroke: 1pt),
+    node((-2.1, 0.2), [6], name:<6>, stroke: 1pt),
+    node((-1.0, 0.4), [7], name:<7>, stroke: 1pt),
+    node((-0.7, 1.3), [8], name:<8>, stroke: 1pt),
+    edge(<1>, <2>, "-", stroke: 1pt + red),    
+    edge(<1>, <3>, "-", stroke: 1pt + red),
+    edge(<1>, <4>, "-", stroke: 1pt + red),
+    edge(<1>, <5>, "-", stroke: 1pt + red),
+    edge(<2>, <6>, "-"),   
+    edge(<2>, <7>, "-"),
+    edge(<3>, <4>, "-"),
+    edge(<3>, <7>, "-"),
+    edge(<3>, <8>, "-"),
+    edge(<4>, <7>, "-"),
+    edge(<6>, <8>, "-"),
+    ),
+    [12345],
+),
+
+$arrow.r$,
+)
 
 
 
