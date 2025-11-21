@@ -423,6 +423,10 @@ As seen from our example above.
 
 == DFS
 
+Completely the same as BFS, except that we use a *stack* instead of a queue. \
+
+
+
 === DFS algorithm
 
 #pagebreak()
