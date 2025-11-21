@@ -58,14 +58,20 @@ Predecessor function: $p(v)$, for all $v space epsilon V space \ space {r}$ // F
 
 == BFS
 
-Adjacency lists of vertices are considered on a first-come-first serve basis. Implemented with a _queue_.
+#linebreak()
+
+=== BFS instroduction
+
+In *breadth-first search* the adjacency lists of vertices are considered on a first-come-first serve basis. *BFS* is implemented with a _queue_ data structure. \
+
+A _queue_ data structure operates in a FIFO (first-in, first-out) principle. Meaning first element that entered the queue, will be the first one to leave the _queue_ (elements are removed in the same order in which they were inserted).
 
 For a connected graph, the algorithm will return:
 - A spanning tree given by its predecessor function,
 - the level function,
 - the time function (order in which vertices are added to the tree)
 
-In BFS algorithm we will first consider the neighbors (one-by-one) before we look through the neighbours of any of them. \
+In BFS algorithm we will first consider all of the neighbors (one-by-one) before we look through the neighbours of any of them. \
 
 Therefore, first edges incident to $r$ are selected, and only after that we are looking at neighbors of the neighbors of $r$. \
 
@@ -74,7 +80,7 @@ This is called Breadth-first search algorithm. This approach expands (spreads) t
 We start with just the root $r$ in the queue and we repeatedly pop the head of the queue, and push all its new neighbors to the queue.
 
 
-\
+#linebreak()
 
 === BFS algorithm
 > INPUT: a connected graph $G$, a vertex $r space epsilon V(G)$ \
@@ -423,8 +429,27 @@ As seen from our example above.
 
 == DFS
 
+#linebreak()
+
+=== DFS introduction
+
+In contrast to BFS, where we first scan the whole adjacency list of the vertex on top of the _queue_, in *depth-first search* we scan the adjacency list of the most recent vertex $x$ added to the _stack_ and we look for its neighbour not in $T$. \
+
+If there is such a neighbor, we add it to $T$. If not, we backtrack to the vertex which was added to $T$ just before $x$ and examine its neighbours, and so on. \
+
+For DFS to be implemented, we use a *_stack_* data structure. A _stack_ is a linear data structure (like a simple list) which has a top element and basic operations such as placing a new item on top of the _stack_, or removing the top element from the _stack_. In contrast to _queue_, a _stack_ operates in LIFO (last-in, first-out) principle, meaning elements are inserted and removed exclusively at the designated end of the structure, referred to as the top. \
+
+In *depth-first search*, the _stack_ $S$ is initially empty. We pick a root vertex $r$ and scan its neighbours in its adjacency list. We pick one element from that list and place it on top of the _stack_ $S$. We then look at this new vertex, now acting as the new top element of _stack_ $S$ and we inspect its adjacency list. If in that list exists a vertex $y$ which is not already in our tree $T$ we select it and add it to the top of _stack_ $S$ again. And so on, we continue until there are no suitable vertices in the top element of _stack_ $S$. If there indeed aren't any, we remove the top element of _stack_ $S$ and check the vertex that is the new top of the _stack_ $S$. \
+
+Again for a connected graph, the algorithm will return:
+- A spanning tree given by its predecessor function,
+- the level function,
+- the time function (order in which vertices are added to the tree)
+
+#linebreak()
+
 === DFS algorithm
-Completely the same as BFS, except that we use a *stack* instead of a queue.
+Completely the same as BFS, except that we use a *_stack_* instead of a queue.
 
 > INPUT: a connected graph $G$, a vertex $r space epsilon V(G)$ \
 > OUTPUT: an $r$-tree $T subset.eq G$, its predecessor function $p$, its level function $l$, the time function $t$
@@ -749,10 +774,16 @@ block(
   $emptyset arrow.r$ 1 $arrow.r$ 12 $arrow.r$ 127 $arrow.r$ 1273 $arrow.r$ 12734 $arrow.r$ 1273 $arrow.r$ 12738 $arrow.r$ 127386 $arrow.r$
   12738 $arrow.r$ 1273 $arrow.r$ 127 $arrow.r$ 12 $arrow.r$ 1 $arrow.r$ 15 $arrow.r$ 1 $arrow.r emptyset$]
 )
-
-
-
 )
+
+#pagebreak()
+
+=== DFS properties
+
+*Theorem* Let T be a DFS tree of G. Every edge of G joins vertices related in T. \
+
+Like we had for BFS a theorem that says every edge of the graph skips at most one level, which is the most important property of BFS. Here we have this property. Every edge goes vertically, from ancestor to predecessor.
+
 
 
 
