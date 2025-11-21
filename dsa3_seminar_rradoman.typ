@@ -64,20 +64,20 @@ Predecessor function: $p(v)$, for all $v space epsilon V space \ space {r}$ // F
 
 In *breadth-first search* the adjacency lists of vertices are considered on a first-come-first serve basis. *BFS* is implemented with a _queue_ data structure. \
 
-A _queue_ data structure operates in a FIFO (first-in, first-out) principle. Meaning first element that entered the queue, will be the first one to leave the _queue_ (elements are removed in the same order in which they were inserted).
+A _queue_ data structure operates in a FIFO (first-in, first-out) principle. Meaning first element that entered the _queue_, will be the first one to leave the _queue_ (elements are removed in the same order in which they were inserted). \
+
+In *BFS* algorithm we will first consider all of the neighbors (one-by-one) before we look through the neighbours of any of them. \
+
+Therefore, first edges incident to $r$ are selected, and only after we have used (added them to the tree) we are looking at the neighbors of the neighbors of $r$. \
+
+This is called *breadth-first search* algorithm. This approach expands (spreads) the tree as much as possible. \
+
+We start with just the root $r$ in the _queue_ and we repeatedly pop the head of the _queue_, and push all its new neighbors to the _queue_. \
 
 For a connected graph, the algorithm will return:
 - A spanning tree given by its predecessor function,
 - the level function,
 - the time function (order in which vertices are added to the tree)
-
-In BFS algorithm we will first consider all of the neighbors (one-by-one) before we look through the neighbours of any of them. \
-
-Therefore, first edges incident to $r$ are selected, and only after that we are looking at neighbors of the neighbors of $r$. \
-
-This is called Breadth-first search algorithm. This approach expands (spreads) the tree as much as possible. \
-
-We start with just the root $r$ in the queue and we repeatedly pop the head of the queue, and push all its new neighbors to the queue.
 
 
 #linebreak()
