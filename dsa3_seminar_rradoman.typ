@@ -58,29 +58,46 @@ Predecessor function: $p(v)$, for all $v space epsilon V space \ space {r}$ // F
 
 == BFS
 
-Adjacency lists of vertices are considered on a first-come-first serve basis.
-
-Implemented with a _queue_:
-
-Start with just the root in the queue.
-
-Repeatedly pop the head of the queue, and push all its new neighbors to the queue.
+Adjacency lists of vertices are considered on a first-come-first serve basis. Implemented with a _queue_.
 
 For a connected graph, the algorithm will return:
 - A spanning tree given by its predecessor function,
 - the level function,
 - the time function (order in which vertices are added to the tree)
 
+In BFS algorithm we will first consider the neighbors (one-by-one) before we look through the neighbours of any of them. \
+
+Therefore, first edges incident to $r$ are selected, and only after that we are looking at neighbors of the neighbors of $r$. \
+
+This is called Breadth-first search algorithm. This approach expands (spreads) the tree as much as possible. \
+
+We start with just the root $r$ in the queue and we repeatedly pop the head of the queue, and push all its new neighbors to the queue.
+
+
 \
 
 === BFS algorithm
 > INPUT: a connected graph $G$, a vertex $r space epsilon V(G)$ \
-> OUTPUT: an $r$-tree $T in G$, its predecessor function $p$, its level function $l$, the time function $t$.
+> OUTPUT: an $r$-tree $T subset.eq G$, its predecessor function $p$, its level function $l$, the time function $t$
 
 
+
+*BFS algorithm* \
 // WRITE OUT COMPLETE ALGORITHM
-$Q space := emptyset,$ $Q space arrow.l r,$ $l(r) := 0$ $t(r) := 1,$ mark $r, i := 1$ \
-*while* $Q space note emptyset $
+$Q := emptyset,$ $space$ $Q arrow.l r, $ $space$ $l(r) := 0$ $space$ $t(r) := 1,$ $space$ mark $r, i := 1$ \
+*while* $Q eq.not emptyset $ \
+#pad(left:15pt)[$x arrow.l Q$ \
+$$if $x$ has unmarked neighbor $y$ *then*
+]
+#pad(left:30pt)[
+  $i++$ \
+  $Q arrow.l y$, $space$ mark $y$, $space$ $p(y) := x$, $space$ $l(y) := l(x) + 1$, $space$ $t(y) := i$
+]
+#pad(left:15pt)[*else*]
+#pad(left:30pt)[remove head of $Q$]
+#pad(left:15pt)[*end if*]
+*end while* \
+*return everything*
 
 #pagebreak()
 
@@ -383,6 +400,24 @@ block(
 )
 
 )
+
+#pagebreak()
+
+=== BFS properties
+
+*Theorem* Let $T$ be a BFS tree of $G$, with root $r$. \
+#pad(left:15pt)[a.) $l(v) = d_T (r,v)$, $space$, for every $v in V$,]
+#pad(left:15pt)[b.) $|l(u) - l(v)| lt.eq.slant 1$, for every $u v in E(G)$.]
+
+Level of $v$ is exactly the distance from root $r$ to $v$. \
+
+Every edge of the graph connects only vertices of the same level of the tree or difference by most 1. \ \
+
+*Theorem* Let $T$ be a BFS tree of $G$, with root $r$. Then \
+#pad(left:15pt)[$l(v) = d_G (r,v)$, for every $v in V$]
+
+As seen from our example above.
+
 
 #pagebreak()
 
