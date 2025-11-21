@@ -86,7 +86,7 @@ We start with just the root $r$ in the queue and we repeatedly pop the head of t
 // WRITE OUT COMPLETE ALGORITHM
 $Q := emptyset,$ $space$ $Q arrow.l r, $ $space$ $l(r) := 0$ $space$ $t(r) := 1,$ $space$ mark $r, i := 1$ \
 *while* $Q eq.not emptyset $ \
-#pad(left:15pt)[$x arrow.l Q$ \
+#pad(left:15pt)[consider the head $x$ of $Q$  \
 $$if $x$ has unmarked neighbor $y$ *then*
 ]
 #pad(left:30pt)[
@@ -423,11 +423,31 @@ As seen from our example above.
 
 == DFS
 
-Completely the same as BFS, except that we use a *stack* instead of a queue. \
-
-
-
 === DFS algorithm
+Completely the same as BFS, except that we use a *stack* instead of a queue.
+
+> INPUT: a connected graph $G$, a vertex $r space epsilon V(G)$ \
+> OUTPUT: an $r$-tree $T subset.eq G$, its predecessor function $p$, its level function $l$, the time function $t$
+
+
+*DFS algorithm* \
+// WRITE OUT COMPLETE ALGORITHM
+$S := emptyset,$ $space$ $S arrow.l r, $ $space$ $l(r) := 0$ $space$ $t(r) := 1,$ $space$ mark $r, i := 1$ \
+*while* $S eq.not emptyset $ \
+#pad(left:15pt)[consider the top vertex $x$ of $S$ \
+$$if $x$ has unmarked neighbor $y$ *then*
+]
+#pad(left:30pt)[
+  $i++$ \
+  move $y$ to the top of $S$, $space$ mark $y$, $space$ $p(y) := x$, $space$ $l(y) := l(x) + 1$, $space$ $t(y) := i$
+]
+#pad(left:15pt)[*else*]
+#pad(left:30pt)[remove $x$ from $S$]
+#pad(left:15pt)[*end if*]
+*end while* \
+*return everything*
+
+
 
 #pagebreak()
 
