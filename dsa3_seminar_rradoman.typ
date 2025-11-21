@@ -4,7 +4,7 @@
 // DOCUMENT SETUP
 #set heading(numbering: "1.1")
 #show title: set align(center)
-#title[DSA3 seminar paper]
+#title[DSA3 seminar assignment]
 #set document(title:[DSA3 seminar assignment])
 // dodati naslov na svakoj stranici gore u uglu
 
@@ -377,7 +377,8 @@ block( //placeholder
 
 block(
   [*detailed* _(queue is used)_ \
-  $emptyset arrow.r$ 1 $arrow.r$ 12 $arrow.r$)
+  $emptyset arrow.r$ 1 $arrow.r$ 12 $arrow.r$ 123 $arrow.r$ 1234 $arrow.r$ 12345 $arrow.r$ 2345 $arrow.r$ 23456 $arrow.r$ 234567 $arrow.r$
+  34567 $arrow.r$ 345678 $arrow.r$ 45678 $arrow.r$ 5678 $arrow.r$ 678 $arrow.r$ 78 $arrow.r$ 8 $arrow.r emptyset$
   ]
 )
 
