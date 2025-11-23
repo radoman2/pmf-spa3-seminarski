@@ -34,8 +34,8 @@
 // INTRODUCTION / ABSTRACT
 #align(center)[
   #par(justify: false)[
-    *Abstract / Introduction* \
-    In this term paper I introduce breadth-first search (BFS) and depth-first search (DFS) algorithms, together with their properties and analyze which algorithm is most applicable for use as a web crawler. Both BFS and DFS are tree-search algorithms which return a spanning tree and can be used to determine whether a given graph is connected. This paper starts with theoretical background needed for tree search algorithms, introduces BFS and DFS, gives examples of both algorithms and finally analyses which one is most applicable for web crawling given the intricacies of this process.
+    *Introduction* \
+    In this term paper I introduce breadth-first search (BFS) and depth-first search (DFS) algorithms, together with their properties and analyze which algorithm is most applicable for use as a Web crawler. Both BFS and DFS are tree-search algorithms which return a spanning tree and therefore can be used to determine whether a given graph is connected. This paper starts with theoretical background needed for tree search algorithms, introduces BFS and DFS, gives examples of both algorithms and finally analyses which one is most applicable for Web crawling given the intricacies of this process.
    ]
 ]
 
@@ -45,22 +45,22 @@
 
 == Theoretical background
 *Definition* \
-A graph is a set of _vertices_ and a collection of _edges_ that each connect a pair of vertices. @sedgewick
+A *graph* is a set of _vertices_ and a collection of _edges_ that each connect a pair of vertices. @sedgewick
 
 *Definition* \
-A _path_ in a graph is a sequence of vertices connected by edges. @sedgewick
+A *path* in a graph is a sequence of vertices connected by edges. @sedgewick
 
 *Definition* \
-A graph is _connected_ if there is a path from every vertex to every other vertex in the graph. @sedgewick
+A graph is *connected* if there is a path from every vertex to every other vertex in the graph. @sedgewick
 
 
 *Theorem* \
 A graph is connected if and only if, you can not split it into two such that there are no edges between them. @bondymurty
 
-An approach to check whether a graph is connected is by checking all the partitions (the problem is that there are $2^(n-1)$ of them so it is very inneficient). Another way to check whether a graph is connect is by checking all pairs of vertices - if there is a path connecting them (problem here again is that there are $n^2$ pairs of vertices and for each of them we have to check if there is a path which is also very inneficient on top of number of partitions that we would need to check).
+An approach to check whether a graph is connected is by checking all the partitions (the problem is that there are $2^(n-1)$ of them so it is very inneficient). Another way to check whether a graph is connect is by checking all pairs of vertices if there is a path connecting them (problem here again is that there are $n^2$ pairs of vertices and for each of them we have to check if there is a path which is also very inneficient on top of number of partitions that we would need to check).
 
 *Definition* \
-A graph is connected if and only if it has a spanning tree. @bondymurty
+A graph is *connected* if and only if it has a spanning tree. @bondymurty
 
 Checking whether a graph is connected in such a way (by determining whether it has a spanning tree) is far and away the most efficient way to check graph connectedness.
 
@@ -69,14 +69,16 @@ Both DFS and BFS work in a similar way (they both produce spanning trees), but w
 A *tree-search* algorithm on _G_: \
   > Start with a single root vertex $r space epsilon space V(G)$. This is our initial tree (with just one vertex). \
   > Repeat (for as long as possible): \
-    - Do we have a spanning tree? \
-    - Is the tree edge cut empty? \
-    - If not, add one edge from the cut to the tree. \
+  #pad(left:15pt)[
+  - Do we have a spanning tree? \
+  - Is the tree edge cut empty? \
+  - If not, add one edge from the cut to the tree. \
+  ]
 
 If we want to check _connectedness_ of G, that is the whole algorithm. As noted above, depending on the way we use to choose edges, different spanning tree will result (if the graph is connected of course).
 
 *Definition* \
-Let $X$ and $Y$ be sets of vertices (not necessarily disjoint) of a graph $G = (V,E)$. We denote by $E[X,Y]$ the set of edges of $G$ with one end in $X$ and the other end in $Y$, and by $epsilon (X,Y)$ their number. If $Y = X$, we simply write $E(X)$ and $epsilon (X)$ for $E[X,X]$ and $epsilon (X,X)$, respectivelly. When $Y = V \\ X$, the set $E[X,Y]$ is called the *edge cut* of $G$ associated with $X$, or the _coboundary_ of $X$, and is denoted by $partial (X)$. @bondymurty
+Let $X$ and $Y$ be sets of vertices (not necessarily disjoint) of a graph $G = (V,E)$. We denote by $E[X,Y]$ the set of edges of $G$ with one end in $X$ and the other end in $Y$, and by $epsilon (X,Y)$ their number. If $Y = X$, we simply write $E(X)$ and $epsilon (X)$ for $E[X,X]$ and $epsilon (X,X)$, respectively. When $Y = V \\ X$, the set $E[X,Y]$ is called the *edge cut* of $G$ associated with $X$, or the _coboundary_ of $X$, and is denoted by $partial (X)$. @bondymurty
 
 *Definition* \
 A *rooted tree* $T(x)$ is a tree $T$ with a specified vertex $x$, called the _root_ of $T$. @bondymurty
@@ -87,7 +89,7 @@ A *rooted tree* $T(x)$ is a tree $T$ with a specified vertex $x$, called the _ro
 == BFS
 
 === BFS instroduction
-In *breadth-first search* the adjacency lists of vertices are considered on a first-come-first serve basis. *BFS* is implemented with a _queue_ data structure. \
+In *breadth-first search* the adjacency lists of vertices are considered on a first-come-first serve basis. *BFS* is implemented with a _queue_ data structure. @bondymurty \
 
 A _queue_ data structure operates in a FIFO (first-in, first-out) principle. Meaning first element that entered the _queue_, will be the first one to leave the _queue_ (elements are removed in the same order in which they were inserted). \
 
@@ -99,10 +101,14 @@ This is called *breadth-first search* algorithm. This approach expands (spreads)
 
 We start with just the root $r$ in the _queue_ and we repeatedly pop the head of the _queue_, and push all its new neighbors to the _queue_. \
 
+#linebreak()
+
 For a connected graph, the algorithm will return:
+#pad(left:15pt)[
 - A spanning tree (*BFS* spanning tree) given by its predecessor function,
 - the level function,
 - the time function (order in which vertices are added to the tree)
+]
 
 
 #linebreak()
@@ -158,7 +164,7 @@ Therefore the following *Proposition A* applies:
 
 === DFS introduction
 
-In contrast to BFS, where we first scan the whole adjacency list of the vertex on top of the _queue_, in *depth-first search* we scan the adjacency list of the most recent vertex $x$ added to the _stack_ and we look for its neighbour not in $T$. \
+In contrast to BFS, where we first scan the whole adjacency list of the vertex on top of the _queue_, in *depth-first search* we scan the adjacency list of the most recent vertex $x$ added to the _stack_ and we look for its neighbour not in $T$. @bondymurty  \
 
 If there is such a neighbor, we add it to $T$. If not, we backtrack to the vertex which was added to $T$ just before $x$ and examine its neighbours, and so on. \
 
@@ -167,18 +173,19 @@ For DFS to be implemented, we use a *_stack_* data structure. A _stack_ is a lin
 In *depth-first search*, the _stack_ $S$ is initially empty. We pick a root vertex $r$ and scan its neighbours in its adjacency list. We pick one element from that list and place it on top of the _stack_ $S$. We then look at this new vertex, now acting as the new top element of _stack_ $S$ and we inspect its adjacency list. If in that list exists a vertex $y$ which is not already in our tree $T$ we select it and add it to the top of _stack_ $S$ again. And so on, we continue until there are no suitable vertices in the top element of _stack_ $S$. If there indeed aren't any, we remove the top element of _stack_ $S$ and check the vertex that is the new top of the _stack_ $S$. \
 
 Again for a connected graph, the algorithm will return:
+#pad(left:15pt)[
 - A spanning tree (*DFS* spanning tree) given by its predecessor function,
 - the level function,
 - the time function (order in which vertices are added to the tree)
+]
 
-#linebreak()
+#pagebreak()
 
 === DFS algorithm @bondymurty
 Completely the same as BFS, except that we use a *_stack_* instead of a queue.
 
 > INPUT: a connected graph $G$, a vertex $r space epsilon V(G)$ \
 > OUTPUT: an $r$-tree $T subset.eq G$, its predecessor function $p$, its level function $l$, the time function $t$
-
 
 *DFS algorithm* \
 // WRITE OUT COMPLETE ALGORITHM
@@ -197,6 +204,8 @@ $$if $x$ has unmarked neighbor $y$ *then*
 *end while* \
 *return everything*
 
+#linebreak()
+
 === DFS properties
 
 *Theorem* Let T be a DFS tree of G. Every edge of G joins vertices related in T. @bondymurty \
@@ -212,10 +221,7 @@ The following proposition provides a link between the input graph $G$, its *DFS*
 
 *Proposition C* *DFS* marks all the vertices connected to a given source in time proportional to the sum of their degrees. DFS allows us to provide clients with a path from a given source to any marked vertex in time proportional its length. @sedgewick
 
-
-
 #pagebreak()
-
 
 // DRAWING OUT THE ALGORITHMS
 
@@ -517,17 +523,7 @@ block(
   34567 $arrow.r$ 345678 $arrow.r$ 45678 $arrow.r$ 5678 $arrow.r$ 678 $arrow.r$ 78 $arrow.r$ 8 $arrow.r emptyset$
   ]
 )
-
 )
-
-
-
-
-
-
-
-
-
 
 === DFS example
 
@@ -833,7 +829,7 @@ block(
 
 = Web crawler application
 
-A web crawler is an internet bot, used by search engines, that systematically browses the world wide web and indexes pages. It is a process by which we gather pages from the Web, in order to index them and support a search engine. The objective of crawling is to quickly and efficiently gather as many useful web pages as possible, together with the link structure that interconnects them. @irbook \
+A *web crawler* is an internet bot, used by search engines, that systematically browses the world wide web and indexes pages. It is a process by which we gather pages from the Web, in order to index them and support a search engine. The objective of crawling is to quickly and efficiently gather as many useful web pages as possible, together with the link structure that interconnects them. @irbook \
 
 Web crawlers store entire pages or parts of page and methodically look for specific information. They store text from the web pages but not media or any scripts that give the page dynamic functionality. \
 
@@ -845,26 +841,28 @@ Features a crawler _must_ provide:
 
 The *URL frontier* at a node is given a URL by its crawl process (or by the host splitter of another crawl process). It maintains the URLs in the frontier and regurgitates them in some order whenever a crawler thread seeks a URL. Two important considerations govern the order in which URLs are returned by the frontier. First, high-quality pages that change frequently should be prioritized for frequent crawling. Thus, the priority of a page should be a function of both its change rate and its quality (using some reasonable quality estimate). The combination is necessary because a large number of spam pages change completely on every fetch.The second consideration is politeness: we must avoid repeated fetch requests to a host within a short time span. @irbook
 
-Tree search algorithms play a vital part of the web crawling phase, when information from the web is fetched, which is later indexed and used in ranking algorithms. Their role is to decide the order of vising pages. \
+*Tree search algorithms* play a vital part of the web crawling phase, when information from the web is fetched, which is later indexed and used in ranking algorithms. Their role is to decide the order of vising pages. \
 
 To achieve this a web crawler, during the crawling stage, does the following: \
-
+#pad(left:15pt)[
 1. It starts from a set of seed URLs
 2. Retreives each page
 3. Extracts all links from that page
 4. Decides which link (URL) to visit next
 5. Continues until crawl limits are reached
+]
 
-This process structurally identical to searching a tree or a graph. \
+This process structurally identical to _searching a tree or a graph_. \
 
-Due to this nature, the choice of the tree search algorithm used to go through this network determines how the web crawler explores the web. \
+Due to this nature, the choice of the tree search algorithm used to go through this network determines how the web crawler explores the Web. \
 
-In this structure each web page represents a node while each link represents an edge (a directed edge). In this sense the entire world wide web becomes a huge directed graph. Tree search algorithms enable navigation of this graph in a methodological way. \
+In this structure each web page represents a *node* while each link represents an *edge* (a _directed edge_). In this sense the entire World Wide Web becomes a huge directed graph. Tree search algorithms enable navigation of this graph in a methodological way. \
 
 How the Tree search algorithm controls the web crawling process:
-
+#pad(left:15pt)[
 - It chooses which URL to crawl next. This is the *crawl frontier*, the core data structure holding URLs that are discovered but not yet crawled.
 - It sets the order in which the pages are discovered. Different tree search algorithms crawl the web differently.
+]
 
 Tree search algorithms (explored in this seminar assignment) used in web crawling are both BFS and DFS, each with their own distinct approaches to crawling. \
 
@@ -876,35 +874,43 @@ BFS is a classic graph traversal algorithm that starts from the seed and progres
 
 DFS technique is similar to BFS, except that at each iteration we select the latest explored but not-yet-visited node. As a result, DFS explores first the nodes that are faraway (in the number of hops) from the seed. @biasbfs \
 
-BFS is the most commonly used Tree search algorithm for large web crawlers. BFS is also the simplest form of crawling algorithm. It starts with a link and keeps on traversing the connected links without taking into consideration any knowledge about the topic. Since it does not take into account the relevancy of the path while traversing, it is also known as the _Blind Search Algorithm_. @webcrawling \
+*BFS* is the most commonly used Tree search algorithm for large web crawlers. BFS is also the simplest form of crawling algorithm. It starts with a link and keeps on traversing the connected links without taking into consideration any knowledge about the topic. Since it does not take into account the relevancy of the path while traversing, it is also known as the _Blind Search Algorithm_. @webcrawling \
 Its properties are: \
 
-- Its fair in a sense that it divides its attention among many websites rather than focusing on one. This approach prevents one page from monopolizing crawl time.
+#pad(left:15pt)[
+- It is fair in a sense that it divides its attention among many websites rather than focusing on one. This approach prevents one page from monopolizing crawl time.
 - It discovers many domains early, which is its major advantage in comparison to DFS. Because BFS explores all first-level links (pages linked directly from seeds) before diving deeper, it quickly discovers a huge number of new domains (in contrast to DFS which might take hours before moving on to the next first-level link). This is cruical if our goal is to build a broad index of the web.
 - BFS avoids going too deep into any one site. This is important in order to avoid loops and traps (such as calendar pages) which may keep it forever in certain sections of a web page. BFS protects the web crawler form these traps, by discovering such pages and then adding them to the end of the queue. In such, BFS naturally limits maximum depth early in a crawl.
 - BFS supports politeness (not hitting one web page repeatedly) because it automatically distributes requests across many domains.
+]
 
 BFS was used nearly purely in its form in the early search engines such as AltaVista and Yahoo mainly because it was simple, efficient and enabled high coverage of the world wide web. \
 
 Additionally majority of academic papers on crawling use BFS because it is easy to implement and its behaviour is predictable making it ideal choice for experimentation and theoretical analysis. \
 
-All of these characteristics make BFS the most common basis for large web crawlers. \
+*All of these characteristics make BFS the most common basis for large web crawlers.* \
 
-On the other hand DFS is rarely used as an approach in web crawling due to its properties: \
+On the other hand *DFS* is rarely used as an approach in web crawling due to its properties: \
 
+#pad(left:15pt)[
 - It goes deep into one web page
 - Its gets caught into traps easily (inherently prone to risks od being “stuck” in a page)
 - Due to its approach it returns terrible coverage
+]
 
 Usually, if used, DFS is more suitable in settings when small crawlers are needed (for example local crowlers one one domain). \
 
 If a crawler is able to download completely a finite set of pages, then any crawling order is good, because at the end all the pages will be downloaded. This is not the case for real Web crawlers, which usually are not able to download all of the Web, mainly due to following reasons: @betterbfs
+#pad(left:15pt)[
 1. Network bandwidth and disk space of the Web crawler are neither infinite nor free.
 2. Pages change over time, and a Web crawler's copy of the Web becomes quickly obsolete.
 3. The amount of information on the Web is finite, but the number of pages is infinite.
+]
 
 Modern crawling algorithm like Priority Search / Best-First Search is used by search engines such as Google and Bing where the frontier is a priority queue, not a plain FIFO queue.
 
 = Conclusion
+This term paper concludes that *BFS* is the algorithm much more suitable for crawling the Web, however this algorithm lacks heuristics that modern search engines use in order to crawl vast amounts of web pages. It was mainly used as web crawler technique in the old web, before improvements to crawling have been implemented by state-of-the art search engines. Due to its predictability and easy-to-reproduce results BFS is still widely used in research settings. *DFS* on another hand is best suited for smaller sample sizes and can provide better results when deep exploration of each domain is needed.
+
 
 #bibliography("references.yaml")
