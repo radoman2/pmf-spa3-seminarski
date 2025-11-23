@@ -75,9 +75,12 @@ A *tree-search* algorithm on _G_: \
 
 If we want to check _connectedness_ of G, that is the whole algorithm. As noted above, depending on the way we use to choose edges, different spanning tree will result (if the graph is connected of course).
 
-Define: edge cut, rooted tree (also called r-tree), levels (distance from root to a specific vertex), ancestor, descendant, parent or predecessor and children. \
+*Definition* \
+Let $X$ and $Y$ be sets of vertices (not necessarily disjoint) of a graph $G = (V,E)$. We denote by $E[X,Y]$ the set of edges of $G$ with one end in $X$ and the other end in $Y$, and by $epsilon (X,Y)$ their number. If $Y = X$, we simply write $E(X)$ and $epsilon (X)$ for $E[X,X]$ and $epsilon (X,X)$, respectivelly. When $Y = V \\ X$, the set $E[X,Y]$ is called the *edge cut* of $G$ associated with $X$, or the _coboundary_ of $X$, and is denoted by $partial (X)$. @bondymurty
 
-Predecessor function: $p(v)$, for all $v space epsilon V space \ space {r}$ // FIX THIS AND DEFINE IT BETTER
+*Definition* \
+A *rooted tree* $T(x)$ is a tree $T$ with a specified vertex $x$, called the _root_ of $T$. @bondymurty
+
 
 #linebreak()
 
@@ -834,7 +837,7 @@ A web crawler is an internet bot, used by search engines, that systematically br
 
 Web crawlers store entire pages or parts of page and methodically look for specific information. They store text from the web pages but not media or any scripts that give the page dynamic functionality. \
 
-Web crawlers are a part of systems that take (download) web pages and turn them into a structure that can be quickly searchable. As stated, web crawlers role in these systems is to download the relevant information from web pages, which later goes through various stages of transformation in order to index such information (parsing, tokenization and building of the inverted index). Finally, ranking algorithms are applied (such as the Page Rank algorithm). \
+Web crawlers are a part of systems that take (download) web pages and turn them into a structure that can be quickly searchable. As stated, web crawlers role in these systems is to download the relevant information from web pages, which later goes through various stages of transformation in order to index such information (parsing, tokenization and building of the inverted index). Finally, ranking algorithms are applied. \
 
 Features a crawler _must_ provide:
 - *Robustness:* The Web contains servers that create spider traps, which are generators of web pages that mislead crawlers into getting stuck fetching an infinite number of pages in a particular domain. Crawlers must be designed to be resilient to such traps. Not all such traps are malicious; some are the inadvertent side-effect of faulty website development. @irbook
@@ -865,10 +868,15 @@ How the Tree search algorithm controls the web crawling process:
 
 Tree search algorithms (explored in this seminar assignment) used in web crawling are both BFS and DFS, each with their own distinct approaches to crawling. \
 
-BFS explores level-by-level outward from seeds. On the other hand DFS, explores deep into one path. \
+*BFS explores level-by-level outward from seeds.* \
 
-BFS is the most commonly used Tree search algorithm for large web crawlers. \
+BFS is a classic graph traversal algorithm that starts from the seed and progressively explores all neighbors. At each new iteration the earliest explored but not-yet-visited node is selected next. Thus, BFS discovers all nodes within some distance from the seed. @biasbfs \
 
+*On the other hand DFS, explores deep into one path.* \
+
+DFS technique is similar to BFS, except that at each iteration we select the latest explored but not-yet-visited node. As a result, DFS explores first the nodes that are faraway (in the number of hops) from the seed. @biasbfs \
+
+BFS is the most commonly used Tree search algorithm for large web crawlers. BFS is also the simplest form of crawling algorithm. It starts with a link and keeps on traversing the connected links without taking into consideration any knowledge about the topic. Since it does not take into account the relevancy of the path while traversing, it is also known as the _Blind Search Algorithm_. @webcrawling \
 Its properties are: \
 
 - Its fair in a sense that it divides its attention among many websites rather than focusing on one. This approach prevents one page from monopolizing crawl time.
@@ -889,6 +897,11 @@ On the other hand DFS is rarely used as an approach in web crawling due to its p
 - Due to its approach it returns terrible coverage
 
 Usually, if used, DFS is more suitable in settings when small crawlers are needed (for example local crowlers one one domain). \
+
+If a crawler is able to download completely a finite set of pages, then any crawling order is good, because at the end all the pages will be downloaded. This is not the case for real Web crawlers, which usually are not able to download all of the Web, mainly due to following reasons: @betterbfs
+1. Network bandwidth and disk space of the Web crawler are neither infinite nor free.
+2. Pages change over time, and a Web crawler's copy of the Web becomes quickly obsolete.
+3. The amount of information on the Web is finite, but the number of pages is infinite.
 
 Modern crawling algorithm like Priority Search / Best-First Search is used by search engines such as Google and Bing where the frontier is a priority queue, not a plain FIFO queue.
 
