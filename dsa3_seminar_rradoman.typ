@@ -29,17 +29,21 @@
   ]
 )
 
-#pagebreak()
+#linebreak()
 
-= Introduction
+// INTRODUCTION / ABSTRACT
+#align(center)[
+  #par(justify: false)[
+    *Abstract / Introduction* \
+    In this term paper I introduce breadth-first search (BFS) and depth-first search (DFS) tree-search algorithms, together with their properties and analyze which algorithm is most applicable for use as a web crawler. Both BFS and DFS are tree-search algorithms which return a spanning tree and are used to determine whether a given graph is connected. This paper starts with theoretical background needed for tree search algorithms, introduces BFS and DFS algorithms, gives examples of both algorithms and finally analyses which one is most applicable for web crawling.
+   ]
+]
 
-#pagebreak()
+#linebreak()
 
 = BFS and DFS
 
-== Purpose and theoretical background
-Both BFS (breadth-first search) and DFS (depth-first search) are tree-search algorithms. They are both used to determine whether a graph is connected.
-
+== Theoretical background
 *Theorem* \
 A graph is connected if and only if, you can not split it into two such that there are no edges between them.
 
@@ -861,6 +865,6 @@ Usually, if used, DFS is more suitable in settings when small crawlers are neede
 
 Modern crawling algorithm like Priority Search / Best-First Search is used by search engines such as Google and Bing where the frontier is a priority queue, not a plain FIFO queue.
 
-= Conculsion
+= Conclusion
 
 
