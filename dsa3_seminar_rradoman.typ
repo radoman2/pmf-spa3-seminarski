@@ -2,13 +2,22 @@
 #import "@preview/fletcher:0.5.8" as f: diagram, node, edge
 
 // DOCUMENT SETUP
+#set page(
+  header: [
+    _DSA3 term paper_
+     #h(1fr)
+    Radoman Radoman 157m/21
+  ] 
+)
 
+#set page("a4")
 #set par(justify: true, leading: 1em)
+#set page(numbering: "1")
 #set heading(numbering: "1.1")
+#show title: set text(size: 21pt)
 #show title: set align(center)
-#title[DSA3 seminar assignment]
-#set document(title:[DSA3 seminar assignment])
-// dodati naslov na svakoj stranici gore u uglu
+#title[DSA3 term paper]
+#set document(title:[DSA3 term paper])
 
 // SIGNATURE
 #grid(
