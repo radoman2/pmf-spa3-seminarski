@@ -35,7 +35,7 @@
 #align(center)[
   #par(justify: false)[
     *Abstract / Introduction* \
-    In this term paper I introduce breadth-first search (BFS) and depth-first search (DFS) tree-search algorithms, together with their properties and analyze which algorithm is most applicable for use as a web crawler. Both BFS and DFS are tree-search algorithms which return a spanning tree and are used to determine whether a given graph is connected. This paper starts with theoretical background needed for tree search algorithms, introduces BFS and DFS algorithms, gives examples of both algorithms and finally analyses which one is most applicable for web crawling.
+    In this term paper I introduce breadth-first search (BFS) and depth-first search (DFS) algorithms, together with their properties and analyze which algorithm is most applicable for use as a web crawler. Both BFS and DFS are tree-search algorithms which return a spanning tree and can be used to determine whether a given graph is connected. This paper starts with theoretical background needed for tree search algorithms, introduces BFS and DFS, gives examples of both algorithms and finally analyses which one is most applicable for web crawling.
    ]
 ]
 
@@ -45,7 +45,7 @@
 
 == Theoretical background
 *Theorem* \
-A graph is connected if and only if, you can not split it into two such that there are no edges between them.
+A graph is connected if and only if, you can not split it into two such that there are no edges between them. @bondymurty @irbook @sedgewick
 
 An approach to check wheter a graph is connected is by checking all the partitions (the problem is that there are $2^(n-1)$ of them so it is very inneficient). Another way to check whether a graph is connect is by checking all pairs of vertices - if there is a path connecting them (problem here again is that there are $n^2$ pairs of vertices and for each of them we have to check if there is a path which is also very inneficient on top of number of partitions that we would need to check).
 
@@ -867,4 +867,4 @@ Modern crawling algorithm like Priority Search / Best-First Search is used by se
 
 = Conclusion
 
-
+#bibliography("references.yaml")

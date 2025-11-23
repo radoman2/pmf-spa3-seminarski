@@ -1,0 +1,28 @@
+bondymurty:
+    type: Book
+    author:
+        - Bondy, J. A.
+        - Murty, U. S. R.
+    title:
+        value: "Graph Theory with Applications"
+    date: 1976
+
+irbook:
+    type: Book
+    author:
+        - Manning, Christopher D.
+        - Raghavan, Pragbhakar
+        - Schütze, Hinrich
+    title:
+        value: "An Introduction to Information Retreival"
+    date: 2009
+
+sedgewick:
+    type: Book
+    author:
+        - Sedgewick, Robert
+        - Wayne, Kevin
+    title:
+        value: "Algorithms Fourth Edition"
+    date: 2011
+ 
