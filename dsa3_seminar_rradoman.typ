@@ -35,7 +35,7 @@
 #align(center)[
   #par(justify: false)[
     *Abstract / Introduction* \
-    In this term paper I introduce breadth-first search (BFS) and depth-first search (DFS) algorithms, together with their properties and analyze which algorithm is most applicable for use as a web crawler. Both BFS and DFS are tree-search algorithms which return a spanning tree and can be used to determine whether a given graph is connected. This paper starts with theoretical background needed for tree search algorithms, introduces BFS and DFS, gives examples of both algorithms and finally analyses which one is most applicable for web crawling.
+    In this term paper I introduce breadth-first search (BFS) and depth-first search (DFS) algorithms, together with their properties and analyze which algorithm is most applicable for use as a web crawler. Both BFS and DFS are tree-search algorithms which return a spanning tree and can be used to determine whether a given graph is connected. This paper starts with theoretical background needed for tree search algorithms, introduces BFS and DFS, gives examples of both algorithms and finally analyses which one is most applicable for web crawling given the intricacies of this process.
    ]
 ]
 
@@ -44,13 +44,23 @@
 = BFS and DFS
 
 == Theoretical background
-*Theorem* \
-A graph is connected if and only if, you can not split it into two such that there are no edges between them. @bondymurty @irbook @sedgewick @webcrawling @biasbfs @betterbfs
-
-An approach to check wheter a graph is connected is by checking all the partitions (the problem is that there are $2^(n-1)$ of them so it is very inneficient). Another way to check whether a graph is connect is by checking all pairs of vertices - if there is a path connecting them (problem here again is that there are $n^2$ pairs of vertices and for each of them we have to check if there is a path which is also very inneficient on top of number of partitions that we would need to check).
+*Definition* \
+A graph is a set of _vertices_ and a collection of _edges_ that each connect a pair of vertices. @sedgewick
 
 *Definition* \
-A graph is connected if and only if it has a spanning tree.
+A _path_ in a graph is a sequence of vertices connected by edges. @sedgewick
+
+*Definition* \
+A graph is _connected_ if there is a path from every vertex to every other vertex in the graph. @sedgewick
+
+
+*Theorem* \
+A graph is connected if and only if, you can not split it into two such that there are no edges between them. @bondymurty
+
+An approach to check whether a graph is connected is by checking all the partitions (the problem is that there are $2^(n-1)$ of them so it is very inneficient). Another way to check whether a graph is connect is by checking all pairs of vertices - if there is a path connecting them (problem here again is that there are $n^2$ pairs of vertices and for each of them we have to check if there is a path which is also very inneficient on top of number of partitions that we would need to check).
+
+*Definition* \
+A graph is connected if and only if it has a spanning tree. @bondymurty
 
 Checking whether a graph is connected in such a way (by determining whether it has a spanning tree) is far and away the most efficient way to check graph connectedness.
 
@@ -94,7 +104,7 @@ For a connected graph, the algorithm will return:
 
 #linebreak()
 
-=== BFS algorithm
+=== BFS algorithm @bondymurty
 > INPUT: a connected graph $G$, a vertex $r space epsilon V(G)$ \
 > OUTPUT: an $r$-tree $T subset.eq G$, its predecessor function $p$, its level function $l$, the time function $t$
 
@@ -121,18 +131,25 @@ $$if $x$ has unmarked neighbor $y$ *then*
 
 === BFS properties
 
-*BFS*-trees have two basic properties, the first of which justifies our referring to $l$ as a level function. // ADD SOURCE
+*BFS*-trees have two basic properties, the first of which justifies our referring to $l$ as a level function.
 
-*Theorem* Let $T$ be a BFS tree of $G$, with root $r$. \
+*Theorem* Let $T$ be a BFS tree of $G$, with root $r$. @bondymurty \
 #pad(left:15pt)[a.) $l(v) = d_T (r,v)$, $space$, for every $v in V$,]
 #pad(left:15pt)[b.) $|l(u) - l(v)| lt.eq.slant 1$, for every $u v in E(G)$.]
 
 Level of $v$ is exactly the distance from root $r$ to $v$. \
 
-Every edge of the graph connects only vertices of the same level of the tree or difference by most 1. \ \
+Every edge of the graph connects only vertices of the same level of the tree or difference by most 1. \
 
 *Theorem* Let $T$ be a BFS tree of $G$, with root $r$. Then \
-#pad(left:15pt)[$l(v) = d_G (r,v)$, for every $v in V$]
+#pad(left:15pt)[$l(v) = d_G (r,v)$, for every $v in V$. @bondymurty]
+
+Therefore the following *Proposition A* applies:
+#pad(left:15pt)[For any vertex $v$ reachable from $s$, *BFS* computes a shortest path from $s$ to $v$ (no path from $s$ to $v$ has fewer edges). @sedgewick]
+
+*Proposition A* continued:
+#pad(left:15pt)[BFS takes time proportional to $V + E$ in the worst case. @sedgewick] \
+
 
 == DFS
 
@@ -153,7 +170,7 @@ Again for a connected graph, the algorithm will return:
 
 #linebreak()
 
-=== DFS algorithm
+=== DFS algorithm @bondymurty
 Completely the same as BFS, except that we use a *_stack_* instead of a queue.
 
 > INPUT: a connected graph $G$, a vertex $r space epsilon V(G)$ \
@@ -179,16 +196,20 @@ $$if $x$ has unmarked neighbor $y$ *then*
 
 === DFS properties
 
-*Theorem* Let T be a DFS tree of G. Every edge of G joins vertices related in T. \
+*Theorem* Let T be a DFS tree of G. Every edge of G joins vertices related in T. @bondymurty \
 
 Like we had for *BFS* a theorem that says every edge of the graph skips at most one level, which is the most important property of BFS. Here we have this very important property of *DFS* trees. Every edge goes vertically, from ancestor to predecessor.
 
 The following proposition provides a link between the input graph $G$, its *DFS*-tree $T$, and the two time functions $t$ and $l$ returned by *DFS*. // DODATI SOURCE IZ KNJIGE
 
-*Proposition* Let $u$ and $v$ be two vertices of $G$, with $f(u) lt f(v)$. \
+*Proposition B* Let $u$ and $v$ be two vertices of $G$, with $f(u) lt f(v)$. \
 
 #pad(left:15pt)[a) If $u$ and $v$ are adjacent in $G$, then $l(v) lt l(u)$.]
-#pad(left:15pt)[b) $u$ is an ancestor of $v$ in $T$ if and only if $l(v) lt l(u)$.]
+#pad(left:15pt)[b) $u$ is an ancestor of $v$ in $T$ if and only if $l(v) lt l(u)$. @bondymurty]
+
+*Proposition C* *DFS* marks all the vertices connected to a given source in time proportional to the sum of their degrees. DFS allows us to provide clients with a path from a given source to any marked vertex in time proportional its length. @sedgewick
+
+
 
 #pagebreak()
 
@@ -809,11 +830,17 @@ block(
 
 = Web crawler application
 
-A web crawler is an internet bot, used by search engines, that systematically browses the world wide web and indexes pages. \
+A web crawler is an internet bot, used by search engines, that systematically browses the world wide web and indexes pages. It is a process by which we gather pages from the Web, in order to index them and support a search engine. The objective of crawling is to quickly and efficiently gather as many useful web pages as possible, together with the link structure that interconnects them. @irbook \
 
 Web crawlers store entire pages or parts of page and methodically look for specific information. They store text from the web pages but not media or any scripts that give the page dynamic functionality. \
 
 Web crawlers are a part of systems that take (download) web pages and turn them into a structure that can be quickly searchable. As stated, web crawlers role in these systems is to download the relevant information from web pages, which later goes through various stages of transformation in order to index such information (parsing, tokenization and building of the inverted index). Finally, ranking algorithms are applied (such as the Page Rank algorithm). \
+
+Features a crawler _must_ provide:
+- *Robustness:* The Web contains servers that create spider traps, which are generators of web pages that mislead crawlers into getting stuck fetching an infinite number of pages in a particular domain. Crawlers must be designed to be resilient to such traps. Not all such traps are malicious; some are the inadvertent side-effect of faulty website development. @irbook
+- *Politeness:* Web servers have both implicit and explicit policies regulating the rate at which a crawler can visit them. These politeness policies must be respected. @irbook
+
+The *URL frontier* at a node is given a URL by its crawl process (or by the host splitter of another crawl process). It maintains the URLs in the frontier and regurgitates them in some order whenever a crawler thread seeks a URL. Two important considerations govern the order in which URLs are returned by the frontier. First, high-quality pages that change frequently should be prioritized for frequent crawling. Thus, the priority of a page should be a function of both its change rate and its quality (using some reasonable quality estimate). The combination is necessary because a large number of spam pages change completely on every fetch.The second consideration is politeness: we must avoid repeated fetch requests to a host within a short time span. @irbook
 
 Tree search algorithms play a vital part of the web crawling phase, when information from the web is fetched, which is later indexed and used in ranking algorithms. Their role is to decide the order of vising pages. \
 
