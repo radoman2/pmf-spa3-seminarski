@@ -792,7 +792,28 @@ block(
 
 #pagebreak()
 
-= Applications
+= Web crawler application
+
+A web crawler is an internet bot, used by search engines, that systematically browses the world wide web and indexes pages. \
+
+Web crawlers store entire pages or parts of page and methodically look for specific information. They store text from the web pages but not media or any scripts that give the page dynamic functionality. \
+
+Web crawlers are a part of systems that take (download) web pages and turn them into a structure that can be quickly searchable. As stated, web crawlers role in these systems is to download the relevant information from web pages, which later goes through various stages of transformation in order to index such information (parsing, tokenization and building of the inverted index). Finally, ranking algorithms are applied (such as the Page Rank algorithm). \
+
+Tree search algorithms play a vital part of the web crawling phase, when information from the web is fetched, which is later indexed and used in ranking algorithms. Their role is to decide the order of vising pages. \
+
+To achieve this a web crawler, during the crawling stage, does the following: \
+
+1. It starts from a set of seed URLs
+2. Retreives each page
+3. Extracts all links from that page
+4. Decides which link (URL) to visit next
+5. Continues until crawl limits are reached
+
+
+
+
+
 
 #pagebreak()
 
