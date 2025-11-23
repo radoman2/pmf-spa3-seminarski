@@ -2,6 +2,8 @@
 #import "@preview/fletcher:0.5.8" as f: diagram, node, edge
 
 // DOCUMENT SETUP
+
+#set par(justify: true, leading: 1em)
 #set heading(numbering: "1.1")
 #show title: set align(center)
 #title[DSA3 seminar assignment]
@@ -810,12 +812,45 @@ To achieve this a web crawler, during the crawling stage, does the following: \
 4. Decides which link (URL) to visit next
 5. Continues until crawl limits are reached
 
+This process structurally identical to searching a tree or a graph. \
 
+Due to this nature, the choice of the tree search algorithm used to go through this network determines how the web crawler explores the web. \
 
+In this structure each web page represents a node while each link represents an edge (a directed edge). In this sense the entire world wide web becomes a huge directed graph. Tree search algorithms enable navigation of this graph in a methodological way. \
 
+How the Tree search algorithm controls the web crawling process:
 
+- It chooses which URL to crawl next. This is the *crawl frontier*, the core data structure holding URLs that are discovered but not yet crawled.
+- It sets the order in which the pages are discovered. Different tree search algorithms crawl the web differently.
 
-#pagebreak()
+Tree search algorithms (explored in this seminar assignment) used in web crawling are both BFS and DFS, each with their own distinct approaches to crawling. \
+
+BFS explores level-by-level outward from seeds. On the other hand DFS, explores deep into one path. \
+
+BFS is the most commonly used Tree search algorithm for large web crawlers. \
+
+Its properties are: \
+
+- Its fair in a sense that it divides its attention among many websites rather than focusing on one. This approach prevents one page from monopolizing crawl time.
+- It discovers many domains early, which is its major advantage in comparison to DFS. Because BFS explores all first-level links (pages linked directly from seeds) before diving deeper, it quickly discovers a huge number of new domains (in contrast to DFS which might take hours before moving on to the next first-level link). This is cruical if our goal is to build a broad index of the web.
+- BFS avoids going too deep into any one site. This is important in order to avoid loops and traps (such as calendar pages) which may keep it forever in certain sections of a web page. BFS protects the web crawler form these traps, by discovering such pages and then adding them to the end of the queue. In such, BFS naturally limits maximum depth early in a crawl.
+- BFS supports politeness (not hitting one web page repeatedly) because it automatically distributes requests across many domains.
+
+BFS was used nearly purely in its form in the early search engines such as AltaVista and Yahoo mainly because it was simple, efficient and enabled high coverage of the world wide web. \
+
+Additionally majority of academic papers on crawling use BFS because it is easy to implement and its behaviour is predictable making it ideal choice for experimentation and theoretical analysis. \
+
+All of these characteristics make BFS the most common basis for large web crawlers. \
+
+On the other hand DFS is rarely used as an approach in web crawling due to its properties: \
+
+- It goes deep into one web page
+- Its gets caught into traps easily (inherently prone to risks od being “stuck” in a page)
+- Due to its approach it returns terrible coverage
+
+Usually, if used, DFS is more suitable in settings when small crawlers are needed (for example local crowlers one one domain). \
+
+Modern crawling algorithm like Priority Search / Best-First Search is used by search engines such as Google and Bing where the frontier is a priority queue, not a plain FIFO queue.
 
 = Conculsion
 
