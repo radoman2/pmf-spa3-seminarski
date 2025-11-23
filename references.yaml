@@ -25,4 +25,32 @@ sedgewick:
     title:
         value: "Algorithms Fourth Edition"
     date: 2011
- 
+
+webcrawling:
+    type: Article
+    author:
+        - Nigam, Aviral
+    title:
+        value: "Web Crawling Algorithms"
+    date: 2014
+    
+biasbfs:
+    type: Article
+    author:
+        - Kurant, Maciej
+        - Markopoulou, Athina
+        - Thiran, Patrick
+    title:
+        value: "On the bias of BFS"
+    date: 2010
+
+betterbfs:
+    type: Article
+    author:
+        - Baeza-Yates, Ricardo
+        - Marin, Mauricio
+        - Castillo, Carlos
+        - Rodriguez, Andrea
+    title:
+        value: "Crawling a Country: Better Strategies than Breadth-First for Web Page Ordering"
+    date: 2005

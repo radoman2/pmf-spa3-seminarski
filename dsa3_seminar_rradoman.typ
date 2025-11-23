@@ -45,7 +45,7 @@
 
 == Theoretical background
 *Theorem* \
-A graph is connected if and only if, you can not split it into two such that there are no edges between them. @bondymurty @irbook @sedgewick
+A graph is connected if and only if, you can not split it into two such that there are no edges between them. @bondymurty @irbook @sedgewick @webcrawling @biasbfs @betterbfs
 
 An approach to check wheter a graph is connected is by checking all the partitions (the problem is that there are $2^(n-1)$ of them so it is very inneficient). Another way to check whether a graph is connect is by checking all pairs of vertices - if there is a path connecting them (problem here again is that there are $n^2$ pairs of vertices and for each of them we have to check if there is a path which is also very inneficient on top of number of partitions that we would need to check).
 
