@@ -1,3 +1,3 @@
-# Term paper in DSA3 class.
+# Term paper in DSA3 class
 
-[Final document](dsa3_seminar_rradoman.pdf)
+[DSA3_seminar_rradoman](dsa3_seminar_rradoman.pdf)
